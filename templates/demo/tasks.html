@@ -1,0 +1,75 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block sidebar %}
+<nav class=" app_main  fixed-top" >
+         <ul class=" header">
+ 
+   <a class="logo" style="text-decoration: none;" href="{% url 'about' %}">Главная</a>
+
+      <div class="form">
+          <input class="form-input_m" type="text" placeholder="Напишите вашу задачу здесь" v-bind:value="valueInput" v-on:input="handleInput" v-on:keypress.enter="addTask">
+          <button class="btn" v-on:click="addTask">Добавить задачу</button>
+          
+        </div>
+
+         </ul>
+
+ </nav>
+ 
+        {% endblock %}   
+{% block content %}
+   
+  <div class="app_main" id="app">
+    <div class="container">
+      
+      <h2>
+        <span>Задачи в работе</span>
+        <span class="mask-num">{{ needDoList.length }}</span>
+      </h2>
+      <ul class="mask-list">
+        <li class="limask" v-for="(mask, index) in needDoList" :key="mask.id">
+          <div class="title_task">
+            <input type="checkbox" v-on:change="doCheck(index, 'need')" />
+            <span  >asdasd{{ mask.title }}</span>
+            
+          </div>
+          <ul class="apps">
+            <li v-for="app in apps">
+              <input type="checkbox"/>
+              <span class="">{{ app }}</span>
+            </li>
+          </ul>
+          <div id="timerblock" class="temer">
+            <input  placeholder="Минуты" class="temer_in" type="number" v-bind:value="timerInput" v-on:input="handleInput2" v-on:keypress.enter="TimerRun">
+            <button  id="xaxa" class="btn temer_b" v-on:click="TimerRun(index)">Запустить</button>
+          </div>
+          
+          <button class="btn-remove" v-on:click="removeMask(index, 'need')">Удалить</button>
+        </li>
+      </ul>
+      <h2>
+        <span>Выполненные задачи</span>
+        <span class="mask-num">{{ completeList.length }}</span>
+      </h2>
+      <ul class="mask-list  complete-list">
+        <li class="" v-for="(mask, index) in completeList" :key="mask.id">
+
+
+          <div>
+            
+            <strong><span class="delete2" >sdasd{{ mask.title }}</span></strong>
+          </div>
+
+          <button class="btn-remove" v-on:click="removeMask(index, 'complete')">Удалить</button>
+        </li>
+      </ul>
+    </div>
+  <!-- End App -->
+  </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue-timers/dist/vue-timers.umd.js"></script>
+  <script src="https://unpkg.com/vue@next"></script>
+
+  <script src="{% static 'js/app.js' %}"></script>
+{% endblock %}

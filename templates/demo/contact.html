@@ -1,0 +1,42 @@
+{% extends "index.html" %}
+{% load static %}
+{% block content %}
+    
+<div class="popular">
+    <div class="container">
+        <div class="row popular-title">
+            <h2>О нас</h2>
+        </div>
+    </div>
+</div>
+<div class="container3">
+    <div class="description_2" style="margin-top: -80px;">
+        <h2 class="description-title_2">О компании Двери.ru</h2>
+        <p class="description-text_2">Пн-Пт: 9:00 - 18:00</p>
+        <p class="description-text_2">Сб-Вс: выходной</p>
+        <p><a  href="tel:+7 (911) 501-05-14" class="description-text_2 btn">+7 (911) 501-05-14</a></p>
+        <a href="tel:+7 (911) 501-22-10" class="description-text_2 btn">+7 (911) 501-22-10</a>
+        
+
+
+
+    </div>
+</div>
+<section class="map">
+    <div class="container">
+        <div class="map_main">
+            <div class="description-title_2">
+                Мы на карте
+            </div>
+        </div>
+
+    </div>
+    <div class="map_yan" id="YMapsID" style="z-index: 1;">
+
+    </div>
+</section>
+    <script src="https://api-maps.yandex.ru/2.1?apikey=d76ea29f-f43f-471d-8124-45cf33f4afcf&lang=ru_RU"
+		type="text/javascript">
+		</script>
+	<script src="{% static 'js/script.js' %}"></script>
+{% endblock %}
